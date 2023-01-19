@@ -62,19 +62,19 @@ boardGameDetailsContainer.addEventListener('submit', (e) => {
 
   const gameData = {
     boardGame: {
-      name: e.target.name.value ? e.target.name.value : null,
-      minPlayers: e.target.minPlayers.value ? e.target.minPlayers.value : null,
-      maxPlayers: e.target.maxPlayers.value ? e.target.maxPlayers.value : null,
-      rating: e.target.rating.value ? e.target.rating.value : null,
+      name: e.target.name.value ? e.target.name.value : undefined,
+      minPlayers: e.target.minPlayers.value ? e.target.minPlayers.value : undefined,
+      maxPlayers: e.target.maxPlayers.value ? e.target.maxPlayers.value : undefined,
+      rating: e.target.rating.value ? e.target.rating.value : undefined,
     },
   }
   updateGameDocument(gameData, e.target.getAttribute('data-id'))
-    .then(() => onUpdateGameDocumentSuccess(gameData.boardGame.name))
+    .then((res) => res.json())
+    .then((POJO) => onUpdateGameDocumentSuccess(POJO.boardGame.name))
     .catch(onError)
 })
 
 boardGameDetailsContainer.addEventListener('click', (e) => {
-  e.preventDefault()
 
   const id = e.target.getAttribute('data-id')
   const method = e.target.getAttribute('data-apimethod')
