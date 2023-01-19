@@ -7,12 +7,29 @@ export const showGameDetails = (id) => {
 }
 
 export const createGameDocument = (boardGame) => {
-  return fetch('http://127.0.0.1:8000',{
-    method:'POST',
+  return fetch('http://127.0.0.1:8000', {
+    method: 'POST',
     headers: {
-      'accept': 'application/json',
-      'content-type': 'application/json'
+      accept: 'application/json',
+      'content-type': 'application/json',
     },
-    body: JSON.stringify(boardGame)
+    body: JSON.stringify(boardGame),
+  })
+}
+
+export const updateGameDocument = (boardGame, id) => {
+  return fetch(`http://127.0.0.1:8000/${id}`, {
+    method: 'POST',
+    headers: {
+      accept: 'application/json',
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify(boardGame),
+  })
+}
+
+export const deleteGameDocument = (id) => {
+  return fetch(`http://127.0.0.1:8000/${id}`, {
+    method: 'DELETE',
   })
 }
