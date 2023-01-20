@@ -19,7 +19,7 @@ export const createGameDocument = (boardGame) => {
 
 export const updateGameDocument = (boardGame, id) => {
   return fetch(`http://127.0.0.1:8000/${id}`, {
-    method: 'POST',
+    method: 'PATCH',
     headers: {
       accept: 'application/json',
       'content-type': 'application/json',
